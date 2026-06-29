@@ -1,1 +1,210 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auth Demo</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- ===================== LOGIN ===================== -->
+  <main class="page view active" id="view-login">
+    <div class="form-card">
+      <div class="brand"><span class="dot">●</span> AuthDemo</div>
+      <h1 class="form-title">Sign in</h1>
+      <p class="form-sub">Welcome back. Enter your details to continue.</p>
+
+      <form id="login-form" novalidate>
+        <div class="field">
+          <label for="login-email">Email</label>
+          <input type="email" id="login-email" data-error-for="login-email-error" placeholder="you@example.com" autocomplete="email" />
+          <p class="error-msg" id="login-email-error"></p>
+        </div>
+        <div class="field">
+          <label for="login-password">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="login-password" data-error-for="login-password-error" placeholder="Your password" autocomplete="current-password" />
+            <button type="button" class="toggle-visibility" data-toggle-target="login-password" aria-label="Show password">Show</button>
+          </div>
+          <p class="error-msg" id="login-password-error"></p>
+        </div>
+        <div class="row-between">
+          <label class="checkbox-row" style="margin-bottom:0;">
+            <input type="checkbox" id="login-remember" /> Remember me
+          </label>
+          <a href="#" data-nav="forgot-1">Forgot password?</a>
+        </div>
+        <button type="submit" class="btn btn-primary" id="login-submit">
+          <span class="spinner"></span><span class="btn-label">Sign in</span>
+        </button>
+      </form>
+      <p class="form-foot">Don't have an account? <a href="#" data-nav="register">Create one</a></p>
+    </div>
+  </main>
+
+  <!-- ===================== REGISTER ===================== -->
+  <main class="page view" id="view-register">
+    <div class="form-card">
+      <div class="brand"><span class="dot">●</span> AuthDemo</div>
+      <h1 class="form-title">Create your account</h1>
+      <p class="form-sub">It only takes a minute. Your data stays in this browser.</p>
+
+      <form id="register-form" novalidate>
+        <div class="field">
+          <label for="reg-name">Full name</label>
+          <input type="text" id="reg-name" data-error-for="reg-name-error" placeholder="Jane Doe" autocomplete="name" />
+          <p class="error-msg" id="reg-name-error"></p>
+        </div>
+        <div class="field">
+          <label for="reg-email">Email</label>
+          <input type="email" id="reg-email" data-error-for="reg-email-error" placeholder="you@example.com" autocomplete="email" />
+          <p class="error-msg" id="reg-email-error"></p>
+        </div>
+        <div class="field">
+          <label for="reg-password">Password</label>
+          <div class="input-wrap">
+            <input type="password" id="reg-password" data-error-for="reg-password-error" placeholder="Min. 8 characters" autocomplete="new-password" />
+            <button type="button" class="toggle-visibility" data-toggle-target="reg-password" aria-label="Show password">Show</button>
+          </div>
+          <div class="strength" id="reg-strength-meter" data-level="0"><i></i><i></i><i></i><i></i></div>
+          <p class="strength-label" id="reg-strength-label"></p>
+          <p class="error-msg" id="reg-password-error"></p>
+        </div>
+        <div class="field">
+          <label for="reg-confirm-password">Confirm password</label>
+          <input type="password" id="reg-confirm-password" data-error-for="reg-confirm-password-error" placeholder="Re-enter your password" autocomplete="new-password" />
+          <p class="error-msg" id="reg-confirm-password-error"></p>
+        </div>
+        <div class="field">
+          <label for="reg-security-question">Security question</label>
+          <select id="reg-security-question" data-error-for="reg-security-question-error" style="width:100%; padding:10px 12px; border:1px solid var(--color-border); border-radius:6px; font-size:14px;">
+            <option value="">Select a question</option>
+            <option value="What city were you born in?">What city were you born in?</option>
+            <option value="What was the name of your first pet?">What was the name of your first pet?</option>
+            <option value="What is your favorite teacher's name?">What is your favorite teacher's name?</option>
+          </select>
+          <p class="field-hint">Used to verify you if you forget your password.</p>
+          <p class="error-msg" id="reg-security-question-error"></p>
+        </div>
+        <div class="field">
+          <label for="reg-security-answer">Answer</label>
+          <input type="text" id="reg-security-answer" data-error-for="reg-security-answer-error" placeholder="Your answer" autocomplete="off" />
+          <p class="error-msg" id="reg-security-answer-error"></p>
+        </div>
+        <button type="submit" class="btn btn-primary" id="register-submit">
+          <span class="spinner"></span><span class="btn-label">Create account</span>
+        </button>
+      </form>
+      <p class="form-foot">Already have an account? <a href="#" data-nav="login">Sign in</a></p>
+    </div>
+  </main>
+
+  <!-- ===================== FORGOT PASSWORD ===================== -->
+  <main class="page view" id="view-forgot">
+    <div class="form-card">
+      <div class="brand"><span class="dot">●</span> AuthDemo</div>
+
+      <div class="steps">
+        <div class="step active" id="fp-indicator-1">1. Find account</div>
+        <div class="step" id="fp-indicator-2">2. Verify</div>
+        <div class="step" id="fp-indicator-3">3. Reset</div>
+      </div>
+
+      <section id="fp-step-1">
+        <h1 class="form-title">Reset your password</h1>
+        <p class="form-sub">Enter the email on your account to get started.</p>
+        <form id="find-account-form" novalidate>
+          <div class="field">
+            <label for="fp-email">Email</label>
+            <input type="email" id="fp-email" data-error-for="fp-email-error" placeholder="you@example.com" autocomplete="email" />
+            <p class="error-msg" id="fp-email-error"></p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="find-account-submit">
+            <span class="spinner"></span><span class="btn-label">Continue</span>
+          </button>
+        </form>
+      </section>
+
+      <section id="fp-step-2" style="display:none;">
+        <h1 class="form-title">Verify it's you</h1>
+        <p class="form-sub" id="fp-question-display"></p>
+        <form id="verify-form" novalidate>
+          <div class="field">
+            <label for="fp-answer">Your answer</label>
+            <input type="text" id="fp-answer" data-error-for="fp-answer-error" autocomplete="off" />
+            <p class="error-msg" id="fp-answer-error"></p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="verify-submit">
+            <span class="spinner"></span><span class="btn-label">Verify</span>
+          </button>
+        </form>
+      </section>
+
+      <section id="fp-step-3" style="display:none;">
+        <h1 class="form-title">Choose a new password</h1>
+        <p class="form-sub">Make it different from your previous password.</p>
+        <form id="reset-form" novalidate>
+          <div class="field">
+            <label for="fp-new-password">New password</label>
+            <div class="input-wrap">
+              <input type="password" id="fp-new-password" data-error-for="fp-new-password-error" placeholder="Min. 8 characters" autocomplete="new-password" />
+              <button type="button" class="toggle-visibility" data-toggle-target="fp-new-password" aria-label="Show password">Show</button>
+            </div>
+            <div class="strength" id="fp-strength-meter" data-level="0"><i></i><i></i><i></i><i></i></div>
+            <p class="strength-label" id="fp-strength-label"></p>
+            <p class="error-msg" id="fp-new-password-error"></p>
+          </div>
+          <div class="field">
+            <label for="fp-confirm-new-password">Confirm new password</label>
+            <input type="password" id="fp-confirm-new-password" data-error-for="fp-confirm-new-password-error" autocomplete="new-password" />
+            <p class="error-msg" id="fp-confirm-new-password-error"></p>
+          </div>
+          <button type="submit" class="btn btn-primary" id="reset-submit">
+            <span class="spinner"></span><span class="btn-label">Reset password</span>
+          </button>
+        </form>
+      </section>
+
+      <p class="form-foot">Remembered your password? <a href="#" data-nav="login">Sign in</a></p>
+    </div>
+  </main>
+
+  <!-- ===================== DASHBOARD ===================== -->
+  <main class="view" id="view-dashboard">
+    <div class="dash-shell">
+      <div class="dash-header">
+        <div class="brand"><span class="dot">●</span> AuthDemo</div>
+        <button class="btn btn-danger" id="logout-btn" style="width:auto; padding:8px 14px;">Sign out</button>
+      </div>
+
+      <h1 class="welcome-name" id="welcome-name">—</h1>
+      <p class="welcome-email" id="welcome-email">—</p>
+
+      <div class="dash-grid">
+        <div class="card">
+          <h2>Account</h2>
+          <div class="meta-row"><span>Name</span><span id="meta-name">—</span></div>
+          <div class="meta-row"><span>Email</span><span id="meta-email">—</span></div>
+          <div class="meta-row"><span>Member since</span><span id="meta-created">—</span></div>
+          <div class="meta-row"><span>Status</span><span class="badge">Active</span></div>
+        </div>
+
+        <div class="card">
+          <h2>Current session</h2>
+          <div class="meta-row"><span>Token</span><span id="session-token">—</span></div>
+          <div class="meta-row"><span>Issued at</span><span id="session-issued">—</span></div>
+          <div class="meta-row"><span>Remember me</span><span id="session-remember">—</span></div>
+          <div class="countdown-row">
+            <span>Expires in</span>
+            <span class="countdown-val" id="session-countdown">—</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="main.js"></script>
+</body>
+</html>
