@@ -1,4 +1,3 @@
-
 :root {
   --color-bg: #f7f7f6;
   --color-ink: #1a1a1a;
@@ -324,4 +323,4 @@ input[aria-invalid="true"] { border-color: var(--color-error); }
 
 /* ---------- View switching (single-page app) ---------- */
 .view { display: none; }
-.view.active { display: block; }
+.view.active { display: block; }    
