@@ -16,7 +16,13 @@
     outline-offset: 2px;
   }
 }
+.erroratinput {
+  border: 1px solid rgb(255, 0, 0);
 
+}
+.errormsg{
+  color: rgb(255, 0, 0);
+}
 .hero {
   position: relative;
 

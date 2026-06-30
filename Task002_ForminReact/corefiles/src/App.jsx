@@ -36,7 +36,8 @@ function App() {
       </div>
       <div>
         <label>Father Name: </label>
-         <input
+        <input
+          className={errors.fatherName ? "erroratinput" : ""}
           {...register("fatherName", {
             required: "This field is required",
             minLength: {
@@ -49,7 +50,7 @@ function App() {
             },
           })}
         />
-        {errors.fatherName && <p>{errors.fatherName.message}</p>}
+        {errors.fatherName && <p className="errormsg">{errors.fatherName.message}</p>}
       </div>
 
       <input type="submit" value="Submit" />
